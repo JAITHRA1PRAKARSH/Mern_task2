@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 4px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 4px 4px;
+        }
+
+        .result {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Reverse a Number</h3>
+    <form id="reverseForm">
+        <label for="numberInput">Enter a number:</label>
+        <input type="number" id="numberInput" name="numberInput" required>
+        <button type="submit">Reverse</button>
+    </form>
+    <div class="result">
+        <h3>Reversed Number:</h3>
+        <p id="reversedNumber"></p>
+    </div>
+
+    <script>
+        function reverseNumber(num) {
+            let numStr = num.toString();
+            let isNegative = num < 0;
+
+            if (isNegative) {
+                numStr = numStr.slice(1);
+            }
+
+            let reversedStr = numStr.split('').reverse().join('');
+            let reversedNum = parseInt(reversedStr, 10);
+
+            if (isNegative) {
+                reversedNum = -reversedNum;
+            }
+
+            return reversedNum;
+        }
+
+        document.getElementById('reverseForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            let inputNumber = parseInt(document.getElementById('numberInput').value, 10);
+            let reversed = reverseNumber(inputNumber);
+            document.getElementById('reversedNumber').textContent = reversed;
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        button {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #output {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>GMT Date and Time Display</h2>
+    <button onclick="showGMTTime()">Show GMT Time</button>
+    <button onclick="showGMTDate()">Show GMT Date</button>
+
+    <div id="output"></div>
+
+    <script>
+        function showGMTTime() {
+            var now = new Date();
+            var hours = now.getUTCHours();
+            var minutes = now.getUTCMinutes();
+            var seconds = now.getUTCSeconds();
+            document.getElementById('output').innerText = now;
+        }
+
+        function showGMTDate() {
+            var now = new Date();
+            var day = now.getUTCDate();
+            var monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                'July', 'August', 'September', 'October', 'November', 'December'];
+            var monthIndex = now.getUTCMonth();
+            var year = now.getUTCFullYear();
+
+            var dateString = day + '/' + monthNames[monthIndex] + '/' + year;
+
+            document.getElementById('output').innerText = dateString;
+        }
+
+        function formatTime(timeValue) {
+            return timeValue < 10 ? '0' + timeValue : timeValue;
+        }
+    </script>
+</body>
+
+</html>

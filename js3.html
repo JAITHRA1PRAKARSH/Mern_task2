@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="number"] {
+            width: 100px;
+            padding: 5px;
+        }
+
+        button {
+            padding: 4px 4px;
+            margin-right: 10px;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <label for="num1">Enter first number:</label>
+    <input type="number" id="num1">
+    <br><br>
+    <label for="num2">Enter second number:</label>
+    <input type="number" id="num2">
+    <br><br>
+    <button onclick="multiply()">Multiply</button>
+    <button onclick="divide()">Divide</button>
+
+    <div id="result"></div>
+
+    <script>
+        function multiply() {
+            performOperation('*');
+        }
+
+        function divide() {
+            performOperation('/');
+        }
+
+        function performOperation(operator) {
+            var num1 = parseFloat(document.getElementById('num1').value);
+            var num2 = parseFloat(document.getElementById('num2').value);
+
+            if (isNaN(num1) || isNaN(num2)) {
+                document.getElementById('result').innerText = 'Please enter valid numbers.';
+                return;
+            }
+
+            var result;
+            if (operator === '*') {
+                result = num1 * num2;
+            } else if (operator === '/') {
+                if (num2 === 0) {
+                    document.getElementById('result').innerText = 'Cannot divide by zero.';
+                } else {
+                    result = num1 / num2;
+                }
+            }
+
+            if (result) {
+                document.getElementById('result').innerText = 'The result is: ' + result;
+            }
+        }
+    </script>
+</body>
+
+</html>

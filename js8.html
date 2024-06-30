@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f6f6f6;
+        }
+
+        .container {
+            background-color: #c11d72;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        .form-group textarea {
+            height: 100px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .checkbox-group label {
+            margin-right: 15px;
+        }
+
+        button {
+            background-color: #3877e5;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2860b0;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+
+        .valid {
+            color: green;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Registration Form</h2>
+        <form action="#" method="post" id="registration-form">
+            <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input type="text" name="first-name" id="first-name" placeholder="Enter First Name" required>
+                <span class="error" id="first-name-error">Poor</span>
+            </div>
+            <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" name="last-name" id="last-name" placeholder="Enter Last Name" required>
+                <span class="error" id="last-name-error">Poor</span>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Enter Email" required>
+                <span class="error" id="email-error">Poor</span>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="Enter Password" required>
+                <span class="error" id="password-error">Poor</span>
+            </div>
+            <div class="form-group">
+                <label for="re-password">Re-enter Password</label>
+                <input type="password" name="re-password" id="re-password" placeholder="Re-enter Password" required>
+                <span class="error" id="re-password-error">Poor</span>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select name="gender" id="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+                <span class="error" id="gender-error">Poor</span>
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" name="age" id="age" placeholder="Enter Age">
+                <span class="error" id="age-error">Poor</span>
+            </div>
+            <div class="form-group">
+                <label for="phone-number">Phone Number</label>
+                <input type="tel" name="phone-number" id="phone-number" placeholder="Enter Phone Number">
+                <span class="error" id="phone-number-error">Poor</span>
+</div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea name="address" id="address" placeholder="Enter Address"></textarea>
+                <span class="error" id="address-error">Poor</span>
+            </div>
+            <div class="form-group">
+                <label for="state">State</label>
+                <input type="text" name="state" id="state" placeholder="Enter State">
+                <span class="error" id="state-error">Poor</span>
+            </div>
+            <div class="form-group">
+                <label for="country">Country</label>
+                <select name="country" id="country">
+                    <option value="">Choose your country</option>
+                    <option value="india">India</option>
+                    <option value="usa">USA</option>
+                    <option value="uk">UK</option>
+                </select>
+                <span class="error" id="country-error">Poor</span>
+            </div>
+            <div class="form-group">
+                <label for="languages">Languages Known</label>
+                <div class="checkbox-group">
+                    <label for="english">
+                        <input type="checkbox" name="languages[]" id="english" value="english"> English
+                    </label>
+                    <label for="kannada">
+                        <input type="checkbox" name="languages[]" id="kannada" value="kannada"> Kannada
+                    </label>
+                    <label for="hindi">
+                        <input type="checkbox" name="languages[]" id="hindi" value="hindi"> Hindi
+                    </label>
+                    <label for="telugu">
+                        <input type="checkbox" name="languages[]" id="telugu" value="telugu"> Telugu
+                    </label>
+                </div>
+                <span class="error" id="languages-error">Poor</span>
+            </div>
+            <div class="form-group">
+                <input type="checkbox" name="terms" id="terms" required>
+                <label for="terms">I declare all the given details are true</label>
+                <span class="error" id="terms-error">Poor</span>
+            </div>
+            <button type="submit" id="submit-btn">REGISTER</button>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('registration-form');
+        const firstNameInput = document.getElementById('first-name');
+        const lastNameInput = document.getElementById('last-name');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const rePasswordInput = document.getElementById('re-password');
+        const genderSelect = document.getElementById('gender');
+        const ageInput = document.getElementById('age');
+        const phoneNumberInput = document.getElementById('phone-number');
+        const addressTextarea = document.getElementById('address');
+        const stateInput = document.getElementById('state');
+        const countrySelect = document.getElementById('country');
+        const languagesCheckboxes = document.querySelectorAll('input[name="languages[]"]');
+        const termsCheckbox = document.getElementById('terms');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            validateFirstName();
+            validateLastName();
+            validateEmail();
+            validatePassword();
+            validateRePassword();
+            validateGender();
+            validateAge();
+            validatePhoneNumber();
+            validateAddress();
+            validateState();
+            validateCountry();
+            validateLanguages();
+            validateTerms();
+
+            if (validateForm()) {
+                alert('Form is valid!');
+            } else {
+                alert('Form is not valid!');
+            }
+        });
+
+        function validateFirstName() {
+            const firstName = firstNameInput.value.trim();
+            if (firstName === '') {
+                document.getElementById('first-name-error').innerHTML = 'This field is required.';
+                return false;
+            } else if (!/^[a-zA-Z]+$/.test(firstName)) {
+                document.getElementById('first-name-error').innerHTML = 'Only alphabets are allowed.';
+                return false;
+            } else {
+                document.getElementById('first-name-error').innerHTML = 'Valid';
+                return true;
+            }
+        }
+
+        function validateLastName() {
+            const lastName = lastNameInput.value.trim();
+            if (lastName === '') {
+                document.getElementById('last-name-error').innerHTML = 'This field is required.';
+                return false;
+            } else if (!/^[a-zA-Z]+$/.test(lastName)) {
+                document.getElementById('last-name-error').innerHTML = 'Only alphabets are allowed.';
+                return false;
+            } else {
+                document.getElementById('last-name-error').innerHTML = 'Valid';
+                return true;
+            }
+        }
+
+        function validateEmail() {
+            const email = emailInput.value.trim();
+            if (email === '') {
+                document.getElementById('email-error').innerHTML = 'This field is required.';
+                return false;
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                document.getElementById('email-error').innerHTML = 'A valid email address is required.';
+                return false;
+            } else {
+                document.getElementById('email-error').innerHTML = 'Valid';
+                return true;
+            }
+        }
+
+        function validatePassword() {
+            const password = passwordInput.value.trim();
+            if (password === '') {
+                document.getElementById('password-error').innerHTML = 'This field is required.';
+                return false;
+            } else if (password.length < 8) {
+                document.getElementById('password-error').innerHTML = 'Password must be at least 8 characters long.';
+                return false;
+            } else {
+                document.getElementById('password-error').innerHTML = 'Valid';
+                return true;
+            }
+        }
+
+        function validateRePassword() {
+            const rePassword = rePasswordInput.value.trim();
+            const password = passwordInput.value.trim();
+            if (rePassword === '') {
+                document.getElementById('re-password-error').innerHTML = 'This field is required.';
+                return false;
+            } else if (rePassword !== password) {
+                document.getElementById('re-password-error').innerHTML = 'Passwords do not match.';
+                return false;
+            } else {
+                document.getElementById('re-password-error').innerHTML = 'Valid';
+                return true;
+            }
+        }
+
+        function validateGender() {
+            const gender = genderSelect.value;
+            if (gender === '') {
+                document.getElementById('gender-error').innerHTML = 'This field is required.';
+                return false;
+            } else {
+                document.getElementById('gender-error').innerHTML = 'Valid';
+                return true;
+            }
+        }
+
+        function validateAge() {
+            const age = ageInput.value.trim();
+            if (age === '') {
+                document.getElementById('age-error').innerHTML = 'This field is required.';
+                return false;
+            } else if (isNaN(age) || age < 1 || age > 120) {
+                document.getElementById('age-error').innerHTML = 'Age must be a number between 1 and 120.';
+                return false;
+            } else {
+                document.getElementById('age-error').innerHTML = 'Valid';
+                return true;
+            }
+        }
+
+        function validatePhoneNumber() {
+            const phoneNumber = phoneNumberInput.value.trim();
+            if (phoneNumber === '') {
+                document.getElementById('phone-number-error').innerHTML = 'This field is required.';
+                return false;
+            } else if (!/^[0-9]{10}$/.test(phoneNumber)) {
+                document.getElementById('phone-number-error').innerHTML = 'Phone number must be a 10-digit number.';
+                return false;
+            } else {
+                document.getElementById('phone-number-error').innerHTML = 'Valid';
+                return true;
+            }
+        }
+
+        function validateAddress() {
+            const address = addressTextarea.value.trim();
+            if (address === '') {
+                document.getElementById('address-error').innerHTML = 'This field is required.';
+                return false;
+            } else {
+                document.getElementById('address-error').innerHTML = 'Valid';
+                return true;
+            }
+        }
+
+        function validateState() {
+            const state = stateInput.value.trim();
+            if (state === '') {
+                document.getElementById('state-error').innerHTML = 'This field is required.';
+                return false;
+            } else {
+                document.getElementById('state-error').innerHTML = 'Valid';
+                return true;
+            }
+        }
+
+        function validateCountry() {
+            const country = countrySelect.value;
+            if (country === '') {
+                document.getElementById('country-error').innerHTML = 'This field is required.';
+                return false;
+            } else {
+                document.getElementById('country-error').innerHTML = 'Valid';
+                return true;
+            }
+        }
+
+        function validateLanguages() {
+            let isValid = false;
+            let languages = [];
+            languagesCheckboxes.forEach((checkbox) => {
+                if (checkbox.checked) {
+                    languages.push(checkbox.value);
+                    isValid = true;
+                }
+            });
+            if (!isValid) {
+                document.getElementById('languages-error').innerHTML = 'At least one language is required.';
+                return false;
+            } else {
+                document.getElementById('languages-error').innerHTML = 'Valid';
+                return true;
+            }
+        }
+
+        function validateTerms() {
+            if (!termsCheckbox.checked) {
+                document.getElementById('terms-error').innerHTML = 'You must agree to the terms.';
+                return false;
+            } else {
+                document.getElementById('terms-error').innerHTML = 'Valid';
+                return true;
+            }
+        }
+
+        function validateForm() {
+            return (validateFirstName() &&
+                validateLastName() &&
+                validateEmail() &&
+                validatePassword() &&
+                validateRePassword() &&
+                validateGender() &&
+                validateAge() &&
+                validatePhoneNumber() &&
+                validateAddress() &&
+                validateState() &&
+                validateCountry() &&
+                validateLanguages() &&
+                validateTerms());
+        }
+    </script>
+</body>
+
+</html>
